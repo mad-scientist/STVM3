@@ -1,0 +1,6 @@
+POST https://auth.save.tv/token HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+Host: auth.save.tv
+Content-Length: 151
+
+grant_type=client_credentials&client_id=07f805dc51224ed783cc68bf7284a191&client_secret=96625a899fee42bbbdc9809f4503675ff53b6fe24cb541228092ad4993858005
