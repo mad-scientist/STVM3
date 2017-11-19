@@ -182,7 +182,7 @@ namespace STVM.Helper
     {
         public static string AppDataPath()
         {
-            return Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData, Environment.SpecialFolderOption.Create) + "\\" + Application.ProductName;
+            return Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData, Environment.SpecialFolderOption.DoNotVerify) + "\\" + Application.ProductName;
         }
     }
 

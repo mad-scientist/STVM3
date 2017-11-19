@@ -43,8 +43,29 @@ namespace STVM
         {
             InitializeComponent();
             lbVersion.Text += Application.ProductVersion;
+
             AppUserFolder = ApplicationEx.AppDataPath();
-            Directory.CreateDirectory(AppUserFolder);
+            // Zugriff auf Settings-Folder prüfen
+            if (Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData, Environment.SpecialFolderOption.None) == "")
+            {
+                MessageBox.Show("Zugriff auf Windows-Ordner für Anwendungsdaten nicht möglich.", "STV Manager 3", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
+            else
+            {
+                try
+                {
+                    if (!Directory.Exists(AppUserFolder))
+                    {
+                        Directory.CreateDirectory(AppUserFolder);
+                    }
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Ordner für Anwendungsdaten kann nicht erstellt werden.\r\n" + e.Message, "STV Manager 3", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Application.Exit();
+                }
+            }   
 
             fmSplash splashScreen = new fmSplash();
             splashScreen.Show();
